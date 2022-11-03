@@ -1,0 +1,75 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+    <title>SME</title>
+    <style>
+
+
+        a{
+        font-size: 15px;
+        }
+
+        a:hover{
+            transition: transform .1s ease;
+            transform: scale(1.04);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            border: none;
+            color: white;
+            background: black !important;
+                }
+        body{
+            background-color: whitesmoke;
+
+        }
+        .hover_img{
+        transition: transform .2s ease;
+        }
+        .hover_img:hover{
+            transform: scale(1.05);
+        }
+        #popup_modal{
+        max-width: 1000px;
+        margin-top: 0px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container text-white pt-8">
+        <div class="p-8 m-5">
+            <div class="col-md-6 mx-auto pt-5 bg-dark">
+                <h3 class="text-white text-center pb-2">Login to your account</h3>
+                <form action="" method="post" class="bg-dark">
+                    <center>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <h6 class="text-white">{{message}}</h6>
+                        {% endfor %}
+                    {% endif %}
+                    
+    
+                    {% csrf_token %}
+                   {{form|crispy}}
+                   
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-primary mt-1 mr-2 mb-3">
+                        <a href="{% url 'smeapp:register' %}">Signup</a> Instead!
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
